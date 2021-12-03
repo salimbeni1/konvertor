@@ -1,85 +1,119 @@
 import DropZone from "./components/DropZone";
 import ConvertButton from "./components/ConvertButton";
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 
-const SERVER_URL = 'http://localhost:8000'
-
-
+import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg';
+const ffmpeg = createFFmpeg({ log: true });
 
 
 
 function App() {
 
   const [files , setFiles] = useState([])
-  
-  // TODO : update session_id
-  const session_id = 'id_1'
+  const [ready, setReady] = useState(false);
+  const [outputVideo, setOutputVideo] = useState();
+
+  const load = async () => {
+    await ffmpeg.load();
+    setReady(true);
+  }
+
+  useEffect(() => {
+    load();
+  }, [])
   
   const getFiles = (f) => {
     console.log('getting files');
     setFiles(f);
   }
-
-  const uploadFiles = async () => {
-
-    await Promise.all(files.map(async (file) => {
-      
-      var data = new FormData()
-      data.append('file', file )
-      data.append('session_id', session_id )
-
-      const response = await fetch(
-      SERVER_URL+'/uploadFile',
-        {
-          method: 'POST',
-          body: data,
-        }
-      )
-      const responseStatus = await response.json()
-      console.log('file upload response : ' , responseStatus)
-    }))
-
-  }
+  
 
   const convert = async () => {
     console.log('converting')
 
-    var data = new FormData()
-    data.append('session_id', session_id )
+    await Promise.all(files.map(async (file) => {
+      console.log(file.name , file);
+      const fileb = await fetchFile(file)
+      console.log('bytes',fileb);
+      ffmpeg.FS('writeFile', file.name, fileb);
+    }))
 
-    const response = await fetch(
-      SERVER_URL+'/convertFiles',
-      {
-        method: 'POST',
-        body: data,
-      }
-    )
-    const responseStatus = await response.json()
-    console.log('conversion response : ' , responseStatus)
+
+    switch(files.length){
+      case 0 :
+        alert('wtf u want a video out of nothing ?')
+        break;
+      case 1:
+        alert('wtf u want a video of just an image ?')
+        break;
+      default:
+
+        const f_1 = files[0].name
+
+        let pos_nb
+        let nb_nb
+        
+        files.forEach(file => {
+          
+          let found_start = false
+          for(let i = 0; i < f_1.length; i++){
+            if(found_start){
+              if(f_1[i] === file.name[i]){
+                nb_nb = nb_nb? Math.max(i-pos_nb , nb_nb) : i-pos_nb
+                break;
+              }
+            }else if(f_1[i] !== file.name[i]){
+              pos_nb = pos_nb? Math.min(i, pos_nb) : i
+              found_start = true
+            }
+          }
+
+        });
+
+        const input_seq_formated = f_1.slice(0,pos_nb)+"%0"+nb_nb+"d"+f_1.slice(pos_nb+nb_nb)
+
+        let min_nb
+
+        files.forEach( (file) => {
+          const nb = parseInt(file.name.slice(pos_nb , pos_nb+ nb_nb))
+          min_nb = min_nb? Math.min(nb,min_nb) : nb;
+          }
+        )
+
+        console.log(min_nb);
+
+        await ffmpeg.run(
+          '-y',
+          '-f', 'image2',
+          '-r','30',
+          '-start_number', min_nb.toString(),
+          '-i', input_seq_formated ,
+          '-vcodec','libx264',
+          '-crf','18',
+          '-pix_fmt', 'yuv420p',
+          'out.mp4'
+          )
+    
+          const result = ffmpeg.FS('readFile', 'out.mp4');
+          setOutputVideo(URL.createObjectURL(new Blob([result.buffer], { type: 'video/mp4' })))
+    }
+
   }
 
-
-
   
-  const uploadAndConvert = async () => {
-    await uploadFiles()
-    await convert()
-  }
-
-  
-  return (
+  return ready? (
     <div className="App">
-      <h1 style={{textAlign:"center"}}>Converter</h1>
+
+      <h1 style={{textAlign:"center" }}>KONVERTOR</h1>
       
       <DropZone onFileUpload={getFiles} />
 
-      <ConvertButton onClickB={uploadAndConvert} title='CONVERT'/>
+      <ConvertButton onClickB={convert} title='CONVERT'/>
 
-
-      {files.length}
+      { outputVideo && <video controls src={outputVideo} width="250" type="video/mp4" />}
 
     </div>
-  );
+  ) : (<> Loading ... </>);
 }
 
 export default App;

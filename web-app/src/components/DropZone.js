@@ -73,7 +73,7 @@ const DropZone = ({onFileUpload}) => {
           </div>
           <aside>
             <h4>Files</h4>
-            <ul>{files}</ul>
+            <ul>{files.length}</ul>
           </aside>
         </section>
     );

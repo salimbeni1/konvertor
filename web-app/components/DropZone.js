@@ -68,7 +68,7 @@ const DropZone = ({onFileUpload}) => {
         <section className="container" style={{padding: "30px"}}>
           <div {...getRootProps({style})}>
             <input {...getInputProps()} />
-            <p>Drag 'n' drop some images here, or click to select files</p>
+            <p>Drag n drop some images here, or click to select files</p>
           </div>
           <aside>
             <h4>Files</h4>

@@ -117,7 +117,10 @@ export default function Home() {
       { outputVideo && <video controls src={outputVideo} width="250" type="video/mp4" />}
 
     </div>
-  ) : (<> Loading ... </>);
+  ) : 
+    <> 
+      Loading ... 
+    </>;
 
 
 }

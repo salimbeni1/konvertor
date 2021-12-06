@@ -15,3 +15,42 @@
     
   }
 }
+
+
+.howtouse {
+
+  display:flex;
+  height:100%;
+  width:100%;
+  justify-content:center;
+  align-items:center;
+  flex-direction: column;
+
+  h1 , h3 {
+    font-family: 'Fredoka One', cursive;
+  }
+
+  p {
+    color: rgba(100, 100, 100, 1);
+  }
+
+}
+
+.about {
+
+  display:flex;
+  height:100%;
+  width:100%;
+  justify-content:center;
+  align-items:center;
+  flex-direction: column;
+
+  h1 {
+    font-family: 'Fredoka One', cursive;
+  }
+
+  p {
+    color: rgba(100, 100, 100, 1);
+  }
+
+}

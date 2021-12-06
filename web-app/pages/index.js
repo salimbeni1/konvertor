@@ -1,11 +1,12 @@
 import DropZone from '../components/DropZone'
 import ConvertButton from '../components/ConvertButton'
-import {Button, Grid ,LinearProgress  ,  CircularProgress , ThemeProvider} from '@mui/material'
+import {Button, Grid ,Typography , LinearProgress , InputAdornment, TextField ,  CircularProgress , ThemeProvider} from '@mui/material'
 import { useState , useEffect , useRef} from 'react'
 import styles from '../styles/Home.module.scss'
 // FFMPEG , converting tools
 import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg';
 import { createTheme } from '@mui/material/styles';
+import { maxWidth } from '@mui/system'
 
 const theme = createTheme({
   status: {
@@ -38,10 +39,14 @@ export default function Home() {
   const [progress, setProgress] = useState(0)
   const ffmpeg = useRef(null)
   const [loading, setLoading] = useState(false)
+  const [frameRate, setFrameRate] = useState(30)
+  const [crf, setCrf] = useState(18)
+  const [outputName, setOutputName] = useState('out.mp4')
+
 
   const load = async () => {
     ffmpeg.current = createFFmpeg({ 
-      log: false,
+      log: true,
       corePath: '/ffmpeg-core/dist/ffmpeg-core.js', // Next.js implement static files differently
       progress: setProgress,
     });
@@ -56,6 +61,14 @@ export default function Home() {
   const getFiles = (f) => {
     console.log('getting files');
     setFiles(f);
+  }
+
+
+  const dowload_video = async () => {
+    const link = document.createElement("a");
+    link.download = outputName;
+    link.href = outputVideo;
+    link.click();
   }
   
 
@@ -117,16 +130,16 @@ export default function Home() {
         await ffmpeg.current.run(
           '-y',
           '-f', 'image2',
-          '-r','30',
+          '-r', frameRate.toString(),
           '-start_number', min_nb.toString(),
           '-i', input_seq_formated ,
           '-vcodec','libx264',
-          '-crf','18',
+          '-crf', crf.toString(),
           '-pix_fmt', 'yuv420p',
-          'out.mp4'
+          outputName
           )
     
-          const result = ffmpeg.current.FS('readFile', 'out.mp4');
+          const result = ffmpeg.current.FS('readFile', outputName);
           setOutputVideo(URL.createObjectURL(new Blob([result.buffer], { type: 'video/mp4' })))
     }
 
@@ -150,32 +163,104 @@ export default function Home() {
         <div className={styles.card}>
           
           <DropZone onFileUpload={getFiles} />
+          
 
-          <div>
-              <h4>total : {files.length} images</h4>
-              <h4>total size : +- {Math.round(files.reduce(
+          <Typography>
+          total : {files.length} images
+          <br/>
+          total size : +- {Math.round(files.reduce(
                   ((previousValue, currentValue) =>  previousValue + currentValue.size) ,0)*1e-6) } MB
-                  </h4>
-        </div>
+          
+          </Typography>
       </div>
     </Grid>
     
     <Grid item >
       <div className={styles.card}>
+
+              
+          <div style={{display: 'flex'}}>
+          <TextField
+              style={{margin: '10px', maxWidth : '45%'}}
+              label={"frame rate"}
+              size="small" type="number"
+              InputProps={{
+                endAdornment:<InputAdornment position="end">fps</InputAdornment>,
+              }}
+              value= {frameRate}
+              onChange= {(e) => setFrameRate(e.target.value)}
+            />
+          <TextField 
+              disabled
+              style={{margin: '10px', maxWidth : '45%'}}
+              label={"crf"}
+              size="small" type="number"
+              value= {crf}
+              onChange= {(e) => setCrf(e.target.value)}
+            />
+          
+          </div>
+          <TextField 
+              style={{margin: '10px'}}
+              label={"output video name"}
+              size="small"
+              value= {outputName}
+              onChange= {(e) => setOutputName(e.target.value)}
+          />
+
           <Button variant="outlined" onClick={convert} color="neutral">
               CONVERT
           </Button>
           <div style={{margin: '10px'}}>
           { loading ? 
           <LinearProgress color="neutral" variant="determinate" value={progress?.ratio*100} />
-          : outputVideo && 
-          <video controls src={outputVideo} width="100%" type="video/mp4" />}
-          
+          : outputVideo && <>
+          <video controls src={outputVideo} width="100%" type="video/mp4" />
+          </>
+          }          
           </div>
+          { !loading && outputVideo && <Button variant="outlined" onClick={dowload_video} color="neutral">
+              DOWNLOAD
+          </Button>}
       </div>
     </Grid>
 
     </Grid>
+
+    <div className={styles.howtouse}>
+        <h1>How to use</h1> 
+
+        <h3> Image file names </h3>
+        <p>
+          the images you want to convert must have the same file name<br/>
+          followed by the frame nb of the image.  <br/>
+          Example 1 : foto01.jpg foto02.jpg foto03.jpg <br/>
+          Example 2 : frame01project.jpg frame02project.jpg frame03project.jpg <br/>
+        </p>
+
+
+        <h3> Supported image types </h3>
+
+        <p>
+        No idea ... <br/> 
+        </p>
+
+        <h3> Convertion parameters </h3>
+
+        <p>
+          You can currently only chose the frame rate. <br/> 
+        </p>
+
+    </div>
+
+    <div className={styles.about}>
+        <h1>About</h1> 
+        <p>
+          What is the point of having an about section ... <br/>
+          <br/>
+          Have fun guys ! <br/>
+        </p>
+    </div>
 
     </ThemeProvider>
 

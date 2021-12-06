@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
-html,
+html {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+html::-webkit-scrollbar {
+  width: 0px; /* For Chrome, Safari, and Opera */
+}
+
 body {
-  
+  //overflow: hidden; // remove scroll bars
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,

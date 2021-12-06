@@ -1,0 +1,15 @@
+.card {
+  padding: 40px;
+  margin: 10px;
+  max-width: 500px;
+  border-radius: 20px;
+  // border: solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(250, 250, 250, 0.3);
+
+
+  video {
+    border-radius: 5px;
+  }
+}

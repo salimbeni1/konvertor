@@ -1,24 +1,51 @@
 import DropZone from '../components/DropZone'
 import ConvertButton from '../components/ConvertButton'
-
-import { useState , useEffect } from 'react'
-
+import {Button, Grid ,LinearProgress  ,  CircularProgress , ThemeProvider} from '@mui/material'
+import { useState , useEffect , useRef} from 'react'
+import styles from '../styles/Home.module.scss'
 // FFMPEG , converting tools
 import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg';
-const ffmpeg = createFFmpeg({ 
-  log: true,
-  corePath: '/ffmpeg-core/dist/ffmpeg-core.js' // Next.js implement static files differently
+import { createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  status: {
+    danger: '#e53e3e',
+  },
+  palette: {
+    primary: {
+      main: '#0971f1',
+      darker: '#053e85',
+    },
+    neutral: {
+      main: '#64748B',
+      contrastText: '#fff',
+    },
+  },
 });
 
+
+
+
+
 export default function Home() {
+
+  
 
 
   const [files , setFiles] = useState([])
   const [ready, setReady] = useState(true);
   const [outputVideo, setOutputVideo] = useState();
+  const [progress, setProgress] = useState(0)
+  const ffmpeg = useRef(null)
+  const [loading, setLoading] = useState(false)
 
   const load = async () => {
-    await ffmpeg.load();
+    ffmpeg.current = createFFmpeg({ 
+      log: true,
+      corePath: '/ffmpeg-core/dist/ffmpeg-core.js', // Next.js implement static files differently
+      progress: setProgress,
+    });
+    await ffmpeg.current.load();
     setReady(true);
   }
 
@@ -33,13 +60,14 @@ export default function Home() {
   
 
   const convert = async () => {
+    setLoading(true)
     console.log('converting')
 
     await Promise.all(files.map(async (file) => {
       console.log(file.name , file);
       const fileb = await fetchFile(file)
       console.log('bytes',fileb);
-      ffmpeg.FS('writeFile', file.name, fileb);
+      ffmpeg.current.FS('writeFile', file.name, fileb);
     }))
 
 
@@ -86,7 +114,7 @@ export default function Home() {
 
         console.log(min_nb);
 
-        await ffmpeg.run(
+        await ffmpeg.current.run(
           '-y',
           '-f', 'image2',
           '-r','30',
@@ -98,25 +126,60 @@ export default function Home() {
           'out.mp4'
           )
     
-          const result = ffmpeg.FS('readFile', 'out.mp4');
+          const result = ffmpeg.current.FS('readFile', 'out.mp4');
           setOutputVideo(URL.createObjectURL(new Blob([result.buffer], { type: 'video/mp4' })))
     }
 
+
+    setLoading(false)
   }
 
   
   return ready? (
-    <div className="App">
+    <>
 
-      <h1 style={{textAlign:"center" }}>KONVERTOR</h1>
-      
-      <DropZone onFileUpload={getFiles} />
+    <ThemeProvider theme={theme}>
 
-      <ConvertButton onClickB={convert} title='CONVERT'/>
+    <Grid container spacing="10" 
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+    >
 
-      { outputVideo && <video controls src={outputVideo} width="250" type="video/mp4" />}
+    <Grid item xs={6}>
+        <div className={styles.card}>
+          
+          <DropZone onFileUpload={getFiles} />
 
-    </div>
+          <div>
+              <h4>total : {files.length} images</h4>
+              <h4>total size : +- {Math.round(files.reduce(
+                  ((previousValue, currentValue) =>  previousValue + currentValue.size) ,0)*1e-6) } MB
+                  </h4>
+        </div>
+      </div>
+    </Grid>
+    
+    <Grid item xs={6}>
+      <div className={styles.card}>
+          <Button variant="outlined" onClick={convert} color="neutral">
+              CONVERT
+          </Button>
+          <div style={{margin: '10px'}}>
+          { loading ? 
+          <LinearProgress color="neutral" variant="determinate" value={progress?.ratio*100} />
+          : outputVideo && 
+          <video controls src={outputVideo} width="100%" type="video/mp4" />}
+          
+          </div>
+      </div>
+    </Grid>
+
+    </Grid>
+
+    </ThemeProvider>
+
+    </>
   ) : 
     <> 
       Loading ... 

@@ -1,0 +1,42 @@
+.header {
+    width:100%;  
+    padding: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    margin-bottom: 30px;
+    
+    h1 {
+        margin: 0px;
+        font-family: 'Fredoka One', cursive;
+    }
+
+    h3 {
+        margin: 0px;
+        padding-left: 30px;
+        color: rgba(0, 0, 0, 1);
+        font-family: 'Fredoka One', cursive;
+    }
+
+    div {
+        display: flex;
+    }
+}
+
+.left {
+    float:left;
+    width:33.33%;
+    text-align: left;
+    
+}
+.center {
+    display: inline-block;
+    margin:0 auto;
+    width:33.33%;
+    text-align: center;
+}
+
+.right {
+    float:right;
+    width:33.33%;
+    text-align: right;
+}
+

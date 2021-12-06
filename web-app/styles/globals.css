@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 html,
 body {
+  
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -13,4 +16,24 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+
+.bg-image {
+  position: absolute;
+  z-index: -1;
+  /* The image used */
+  background-image: url("../public/rainbow_pastel.png");
+
+  filter: blur(50px);
+  -webkit-filter: blur(50px);
+
+  /* Full height */
+  height: 100vh;
+  width: 100vw;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: round;
+  background-size: cover;
 }

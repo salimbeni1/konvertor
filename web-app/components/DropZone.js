@@ -8,10 +8,10 @@ const baseStyle = {
     alignItems: 'center',
     padding: '20px',
     borderWidth: 2,
-    borderRadius: 2,
+    borderRadius: 5,
     borderColor: '#eeeeee',
     borderStyle: 'dashed',
-    backgroundColor: '#fafafa',
+    backgroundColor: 'rgba(250, 250, 250 , 0.3)',
     color: '#bdbdbd',
     outline: 'none',
     transition: 'border .24s ease-in-out'
@@ -68,12 +68,11 @@ const DropZone = ({onFileUpload}) => {
         <section className="container" style={{padding: "30px"}}>
           <div {...getRootProps({style})}>
             <input {...getInputProps()} />
-            <p>Drag n drop some images here, or click to select files</p>
+            <p>Drag & drop some images here, or click to select files</p>
           </div>
-          <aside>
-            <h4>Files</h4>
-            <ul>{files.length}</ul>
-          </aside>
+          
+
+
         </section>
     );
 }

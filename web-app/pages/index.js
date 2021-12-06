@@ -41,7 +41,7 @@ export default function Home() {
 
   const load = async () => {
     ffmpeg.current = createFFmpeg({ 
-      log: true,
+      log: false,
       corePath: '/ffmpeg-core/dist/ffmpeg-core.js', // Next.js implement static files differently
       progress: setProgress,
     });
@@ -146,7 +146,7 @@ export default function Home() {
           alignItems="center"
     >
 
-    <Grid item xs={6}>
+    <Grid item >
         <div className={styles.card}>
           
           <DropZone onFileUpload={getFiles} />
@@ -160,7 +160,7 @@ export default function Home() {
       </div>
     </Grid>
     
-    <Grid item xs={6}>
+    <Grid item >
       <div className={styles.card}>
           <Button variant="outlined" onClick={convert} color="neutral">
               CONVERT

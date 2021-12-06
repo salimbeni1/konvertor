@@ -1,0 +1,141 @@
+.bgImage {
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;    
+    //background-image: url("../public/rainbow_pastel.png");
+    filter: blur(50px);
+    -webkit-filter: blur(50px);
+    
+    height: 100vh;
+    width: 100vw;
+  
+    background-position: center;
+    background-repeat: round;
+    background-size: cover;
+  
+    .shape1 {
+      position: absolute;
+      left: 120vw;
+      top: 22vw;
+      height: 60vw;
+      width: 60vw;
+      border-radius: 50%;
+      background-color: rgba(248, 37, 37, 0.5);
+      animation: 60s ease infinite scale-1;
+    }
+  
+    .shape2 {
+      position: absolute;
+      left: 30vw;
+      top: 70vh;
+      height: 50vw;
+      width: 50vw;
+      border-radius: 50%;
+      background-color: rgba(248, 181, 56, 0.5);
+      animation: 50s ease infinite scale-2;
+    }
+  
+    .shape3 {
+      position: absolute;
+      left: 90%;
+      top: -2%;
+      height: 100vw;
+      width: 100vw;
+      border-radius: 50%;
+      background-color: rgba(244, 255, 87, 0.5);
+      animation: 100s ease infinite scale-3;
+    }
+  
+    .shape4 {
+      position: absolute;
+      left: 80%;
+      top: 60%;
+      height: 400px;
+      width: 400px;
+      border-radius: 50%;
+      background-color: rgba(100, 250, 81, 0.5);
+      animation: 30s ease infinite scale-4;
+    }
+  
+    .shape5 {
+      position: absolute;
+      left: -25vw;
+      top: -25vw;
+      height: 80vw;
+      width: 80vw;
+      border-radius: 50%;
+      background-color: rgba(81, 210, 250, 0.5);
+      animation: 20s ease infinite scale-5;
+    }
+  
+  
+    .shape6 {
+      position: absolute;
+      left: 5%;
+      top: 30%;
+      height: 400px;
+      width: 400px;
+      border-radius: 50%;
+      background-color: rgba(160, 81, 250, 0.5);
+      animation: 50s ease infinite scale-6;
+    }
+  
+  }
+  
+  
+  @keyframes scale-1 {
+    50% {
+      
+      transform: scale(1.15);
+      left: 75vw;
+      top: 1vw;
+    }
+  }
+  
+  @keyframes scale-2 {
+    50% {
+      
+      transform: scale(1.5);
+      left: 26%;
+      top: 70%;
+    }
+  }
+  
+  @keyframes scale-3 {
+    50% {
+      
+      transform: scale(10);
+      left: 86%;
+      top: 15%;
+    }
+  }
+  
+  @keyframes scale-4 {
+    50% {
+      
+      transform: scale(1.15);
+      left: 55%;
+      top: 95%;
+    }
+  }
+  
+  
+  @keyframes scale-5 {
+    50% {
+      
+      transform: scale(1.15);
+      left: 0%;
+      top: 0%;
+    }
+  }
+  
+  @keyframes scale-6 {
+    50% {
+      
+      transform: scale(2);
+      left: 0%;
+      top: 100%;
+    }
+  }
+  
+  

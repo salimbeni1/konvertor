@@ -1,12 +1,12 @@
-import '../styles/globals.css'
+import '../styles/globals.scss'
 import Header from '../components/Header'
-import { height } from '@mui/system';
+import BlurryMovingBG from '../components/BlurryMovingBG'
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-    <div className="bg-image"></div>
-    <Header></Header>
+    <BlurryMovingBG/>
+    <Header/>
     <Component {...pageProps} />
     </>
   );

@@ -3,6 +3,17 @@
     padding: 30px;
     border-bottom: 1px solid rgba(0, 0, 0, .1);
     margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    flex-direction: column;
+
+   @media screen and (min-width: 768px) {
+       flex-direction: row;
+       justify-content: space-between;
+
+   } 
     
     h1 {
         margin: 0px;
@@ -11,32 +22,39 @@
 
     h3 {
         margin: 0px;
-        padding-left: 30px;
+        
         color: rgba(0, 0, 0, 1);
         font-family: 'Fredoka One', cursive;
     }
 
-    div {
-        display: flex;
+    > * {
+        flex-shrink: 0;
+        @media screen and (min-width:768px) {
+            width: 30%;
+        }
     }
+
+   
+    
 }
 
 .left {
-    float:left;
-    width:33.33%;
     text-align: left;
     
 }
 .center {
-    display: inline-block;
     margin:0 auto;
-    width:33.33%;
+    
     text-align: center;
 }
 
 .right {
-    float:right;
-    width:33.33%;
-    text-align: right;
+ display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    h3 {
+        margin: 0 5px;
+    }
 }
 

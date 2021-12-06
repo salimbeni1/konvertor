@@ -230,19 +230,51 @@ export default function Home() {
     <div className={styles.howtouse}>
         <h1>How to use</h1> 
 
+        <h3> Quick guide </h3>
+
+        <p>
+          Simply select your image sequence on the selector box<br/>
+          On the right box , select the desired framerate and press the convert button.<br/> 
+        </p>
+
+        <p>
+          The image file names must follow a frame index (more details below)<br/>
+          Fortunately this is the default output of most popular Animation tools<br/>
+          like Blender and Houdini.
+        </p>
+
+          <div>
+        <img src="Houdini.png" width="70px" />
+        <img src="Blender.png" width="70px" />
+          </div>
+
+
+        <p className={styles.note}>
+          Note : this site doesnt use a server <br/>
+          and the conversion will occur on your browser <br/>
+          As a consequence performances may <br/> varry on different machines
+        </p>
+
         <h3> Image file names </h3>
         <p>
-          the images you want to convert must have the same file name<br/>
+          The images you want to convert must have the same file name<br/>
           followed by the frame nb of the image.  <br/>
-          Example 1 : foto01.jpg foto02.jpg foto03.jpg <br/>
-          Example 2 : frame01project.jpg frame02project.jpg frame03project.jpg <br/>
+        </p> 
+        <p className={styles.note}>
+          Example 1 : frame01.jpg frame02.jpg frame03.jpg <br/>
+          Example 2 : im04v2.jpg im05v2.jpg im06v2.jpg <br/>
         </p>
 
 
         <h3> Supported image types </h3>
 
         <p>
-        No idea ... <br/> 
+        Input : .PNG .JPG .EXR - Output : .MP4
+        </p>
+        
+        <p className={styles.note}>
+          Note : many online video services only support the YUV color space
+          with 4:2:0 chroma subsampling , to maximize compatibility by default subsampling is used.
         </p>
 
         <h3> Convertion parameters </h3>

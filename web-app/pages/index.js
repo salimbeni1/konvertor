@@ -41,7 +41,7 @@ export default function Home() {
 
   const load = async () => {
     ffmpeg.current = createFFmpeg({ 
-      log: true,
+      log: false,
       corePath: '/ffmpeg-core/dist/ffmpeg-core.js', // Next.js implement static files differently
       progress: setProgress,
     });
@@ -165,7 +165,7 @@ export default function Home() {
     </Grid>
     
     <Grid item >
-      <div className={styles.card}>
+      <div className={`${styles.card} ${files.length ? styles.pulser : '' }`} >
 
               
           <div style={{display: 'flex'}}>

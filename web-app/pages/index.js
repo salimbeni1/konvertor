@@ -1,6 +1,6 @@
 import DropZone from '../components/DropZone'
 import ConvertButton from '../components/ConvertButton'
-import {Button, Grid ,Typography , LinearProgress , InputAdornment, TextField ,  CircularProgress , ThemeProvider} from '@mui/material'
+import {Button, Grid ,Typography , Grow, LinearProgress , InputAdornment, TextField ,  CircularProgress , ThemeProvider} from '@mui/material'
 import { useState , useEffect , useRef} from 'react'
 import styles from '../styles/Home.module.scss'
 // FFMPEG , converting tools
@@ -151,7 +151,7 @@ export default function Home() {
           justifyContent="center"
           alignItems="center"
     >
-
+    <Grow in={ready}>
     <Grid item >
         <div className={styles.card}>
           <Typography>
@@ -163,7 +163,13 @@ export default function Home() {
           </Typography>
       </div>
     </Grid>
-    
+    </Grow >
+
+    <Grow
+    in={ready}
+    style={{ transformOrigin: '0 0 0' }}
+    {...(ready ? { timeout: 1000 } : {})}
+    >
     <Grid item >
       <div className={`${styles.card} ${files.length ? styles.pulser : '' }`} >
 
@@ -216,8 +222,10 @@ export default function Home() {
           </Button>}
       </div>
     </Grid>
+    </Grow>
 
     </Grid>
+    
 
     <div id="howtouse" className={styles.howtouse}>
         <h1>How to use</h1> 

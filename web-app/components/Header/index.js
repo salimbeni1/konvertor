@@ -20,8 +20,9 @@ function Header() {
             <h1 className={styles.center}>KONVERTOR</h1>
 
             <div className={styles.right}>
-            <h3>how to use</h3>
-            <h3>about</h3>
+            <a href="#howtouse"><h3>how to use</h3></a>
+            
+            <a href="#about"><h3>about</h3></a>
             </div>
 
         </header>

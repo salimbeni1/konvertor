@@ -219,7 +219,7 @@ export default function Home() {
 
     </Grid>
 
-    <div className={styles.howtouse}>
+    <div id="howtouse" className={styles.howtouse}>
         <h1>How to use</h1> 
 
         <h3> Quick guide </h3>
@@ -277,7 +277,7 @@ export default function Home() {
 
     </div>
 
-    <div className={styles.about}>
+    <div id="about" className={styles.about}>
         <h1>About</h1> 
         <p>
           I was bored of those paid and slow version of image

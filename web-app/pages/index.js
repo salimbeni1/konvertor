@@ -13,13 +13,8 @@ const theme = createTheme({
     danger: '#e53e3e',
   },
   palette: {
-    primary: {
-      main: '#0971f1',
-      darker: '#053e85',
-    },
     neutral: {
-      main: '#64748B',
-      contrastText: '#fff',
+      main: '#64748B'
     },
   },
 });
@@ -85,11 +80,9 @@ export default function Home() {
 
 
     switch(files.length){
-      case 0 :
-        alert('wtf u want a video out of nothing ?')
-        break;
+      case 0:
       case 1:
-        alert('wtf u want a video of just an image ?')
+        alert('You need to upload at least 2 images')
         break;
       default:
 
@@ -161,16 +154,12 @@ export default function Home() {
 
     <Grid item >
         <div className={styles.card}>
-          
-          <DropZone onFileUpload={getFiles} />
-          
-
           <Typography>
+          <DropZone onFileUpload={getFiles} />
           total : {files.length} images
           <br/>
           total size : +- {Math.round(files.reduce(
                   ((previousValue, currentValue) =>  previousValue + currentValue.size) ,0)*1e-6) } MB
-          
           </Typography>
       </div>
     </Grid>
@@ -181,6 +170,7 @@ export default function Home() {
               
           <div style={{display: 'flex'}}>
           <TextField
+              color="neutral"
               style={{margin: '10px', maxWidth : '45%'}}
               label={"frame rate"}
               size="small" type="number"
@@ -192,6 +182,7 @@ export default function Home() {
             />
           <TextField 
               disabled
+              color="neutral"
               style={{margin: '10px', maxWidth : '45%'}}
               label={"crf"}
               size="small" type="number"
@@ -200,7 +191,8 @@ export default function Home() {
             />
           
           </div>
-          <TextField 
+          <TextField
+              color="neutral" 
               style={{margin: '10px'}}
               label={"output video name"}
               size="small"
@@ -288,10 +280,10 @@ export default function Home() {
     <div className={styles.about}>
         <h1>About</h1> 
         <p>
-          What is the point of having an about section ... <br/>
-          <br/>
-          Have fun guys ! <br/>
+          I was bored of those paid and slow version of image
+          to video convertors online. So I decided to make my own.
         </p>
+        <p>Have fun guys !</p>
     </div>
 
     </ThemeProvider>

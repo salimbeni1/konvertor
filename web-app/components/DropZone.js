@@ -7,12 +7,12 @@ const baseStyle = {
     flexDirection: 'column',
     alignItems: 'center',
     padding: '20px',
-    borderWidth: 2,
-    borderRadius: 5,
-    borderColor: '#eeeeee',
+    borderWidth: 1,
+    borderRadius: 6,
+    borderColor: 'rgba(100, 100, 100, 1)',
     borderStyle: 'dashed',
     backgroundColor: 'rgba(250, 250, 250 , 0.3)',
-    color: '#bdbdbd',
+    color: 'rgba(100, 100, 100, 0.8)',
     outline: 'none',
     transition: 'border .24s ease-in-out'
   };

@@ -22,6 +22,15 @@ export default class MyDocument extends Document {
           `,
             }}
           />
+
+          <title>Online Convertor Images(.png, .jpeg, .exr) to .mp4</title>
+
+          <meta name="description" content="convert images for free of type .png .jpeg .exr to .mp4"/>
+
+          <meta name="keywords" content="exr, images, jpeg, ,jpg ,png, convert, mp4"/>
+          <meta name="author" content="Etienne Salimbeni"/>
+
+
         </Head>
         <body>
           <Main />

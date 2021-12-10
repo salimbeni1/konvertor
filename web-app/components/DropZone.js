@@ -40,7 +40,7 @@ const DropZone = ({onFileUpload}) => {
         isDragAccept,
         isDragReject
       } = useDropzone(
-          {accept: 'image/*',
+          {accept: 'image/*, .exr',
            onDropAccepted: f => {onFileUpload(f)}}
           ); 
     

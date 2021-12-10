@@ -213,7 +213,7 @@ export default function Home() {
           { loading ? 
           <LinearProgress color="neutral" variant="determinate" value={progress?.ratio*100} />
           : outputVideo && <>
-          <video controls src={outputVideo} width="100%" type="video/mp4" />
+          <video playsInline autoPlay muted loop src={outputVideo} width="100%" type="video/mp4" />
           </>
           }          
           </div>

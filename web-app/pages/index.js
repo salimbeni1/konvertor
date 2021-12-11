@@ -37,11 +37,12 @@ export default function Home() {
   const [frameRate, setFrameRate] = useState(30)
   const [crf, setCrf] = useState(18)
   const [outputName, setOutputName] = useState('out.mp4')
+  const [gamma, setGamma] = useState(2.2)
 
 
   const load = async () => {
     ffmpeg.current = createFFmpeg({ 
-      log: false,
+      log: true,
       corePath: '/ffmpeg-core/dist/ffmpeg-core.js', // Next.js implement static files differently
       progress: setProgress,
     });
@@ -122,6 +123,7 @@ export default function Home() {
 
         await ffmpeg.current.run(
           '-y',
+          '-gamma' , gamma.toString(),
           '-f', 'image2',
           '-r', frameRate.toString(),
           '-start_number', min_nb.toString(),
@@ -187,16 +189,39 @@ export default function Home() {
               onChange= {(e) => setFrameRate(e.target.value)}
             />
           <TextField 
-              disabled
               color="neutral"
               style={{margin: '10px', maxWidth : '45%'}}
               label={"crf"}
               size="small" type="number"
+              InputProps={{ inputProps: { min: 0, max: 50 } }}
               value= {crf}
               onChange= {(e) => setCrf(e.target.value)}
             />
           
+          
+          
           </div>
+
+
+         { files.length !== 0 && files[0].name.match('[exr|EXR]$')  && 
+          
+          <div style={{display: 'flex'}}>
+            <TextField 
+              color="neutral"
+              style={{margin: '10px', maxWidth : '30%'}}
+              label={"gamma"}
+              size="small" type="number"
+              InputProps={{ inputProps: { min: 0, max: 100 } }}
+              value= {gamma}
+              onChange= {(e) => setGamma(e.target.value)}
+            />
+
+            <p style={{margin: '10px', maxWidth : '100%' , color: 'rgba(100, 100, 100, 1)' }} >
+              only for .EXR
+            </p>
+          </div>}
+          
+
           <TextField
               color="neutral" 
               style={{margin: '10px'}}
@@ -244,13 +269,13 @@ export default function Home() {
         </p>
 
           <div>
-        <img src="Houdini.png" width="70px" />
-        <img src="Blender.png" width="70px" />
+        <img src="Houdini.png" width="70px" alt='houdini logo'/>
+        <img src="Blender.png" width="70px" alt='blender logo'/>
           </div>
 
 
         <p className={styles.note}>
-          Note : this site doesnt use a server <br/>
+          <b>Note : </b> this site doesnt use a server <br/>
           and the conversion will occur on your browser <br/>
           As a consequence performances may <br/> varry on different machines
         </p>
@@ -261,27 +286,35 @@ export default function Home() {
           followed by the frame nb of the image.  <br/>
         </p> 
         <p className={styles.note}>
-          Example 1 : frame01.jpg frame02.jpg frame03.jpg <br/>
-          Example 2 : im04v2.jpg im05v2.jpg im06v2.jpg <br/>
+          <b>Example 1 : </b> frame01.jpg frame02.jpg frame03.jpg <br/>
+          <b>Example 2 : </b> im04v2.jpg im05v2.jpg im06v2.jpg <br/>
         </p>
 
 
         <h3> Supported image types </h3>
 
         <p>
-        Input : .PNG .JPG .EXR - Output : .MP4
+        Input : .PNG .JPG .EXR - Output : .MP4 .MOV
         </p>
         
         <p className={styles.note}>
-          Note : many online video services only support the YUV color space
+          <b>Note : </b> many online video services only support the YUV color space
           with 4:2:0 chroma subsampling , to maximize compatibility by default subsampling is used.
         </p>
 
-        <h3> Convertion parameters </h3>
+        <h3> Parameters </h3>
 
-        <p>
-          You can currently only chose the frame rate. <br/> 
-        </p>
+        <dl>
+          <dt>frame rate</dt>
+          <dd>frame rate of the output video</dd>
+          <dt>crl</dt>
+          <dd>convertion level , 0 keep full quality but may be slower</dd>
+          <dd>try higher values for faster renders</dd>
+          <dt>output name</dt>
+          <dd>output name of the video , chose the output extension here</dd>
+          <dt>gamma</dt>
+          <dd>only for exr images , the gamma correction value</dd>
+        </dl>
 
     </div>
 

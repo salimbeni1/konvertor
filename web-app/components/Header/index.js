@@ -17,7 +17,7 @@ function Header() {
                 {overEmoji ? "0.0" : "-.-" }
             </h3>
 
-            <h1 className={styles.center}>KONVERTOR</h1>
+            <h1 className={styles.center}>Convert Me Please</h1>
 
             <div className={styles.right}>
             <a href="#howtouse"><h3>how to use</h3></a>

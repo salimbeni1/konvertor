@@ -148,6 +148,14 @@ export default function Home() {
 
     <ThemeProvider theme={theme}>
 
+
+    <div className={styles.about}>
+      <p>
+        Convert easily for free your .JPG .PNG .EXR images to .MP4 .MOV videos.
+        Enjoy your conversion :)
+      </p>
+    </div>
+
     <Grid container spacing="10" 
           direction="row"
           justifyContent="center"
@@ -308,8 +316,8 @@ export default function Home() {
           <dt>frame rate</dt>
           <dd>frame rate of the output video</dd>
           <dt>crl</dt>
-          <dd>convertion level , 0 keep full quality but may be slower</dd>
-          <dd>try higher values for faster renders</dd>
+          <dd>convertion level , when crl is set to 1 you keep full quality </dd>
+          <dd>but may be slower, try higher values for faster renders</dd>
           <dt>output name</dt>
           <dd>output name of the video , chose the output extension here</dd>
           <dt>gamma</dt>

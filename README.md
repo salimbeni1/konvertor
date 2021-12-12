@@ -4,7 +4,7 @@ Web app to convert .jpg/.png/.exr images to .mp4/.mov videos.
 This app uses Next.js (a React.js framework) and ffmpeg.wasm (to convert the images directly on the browser !!) 
 
 
-![demo gif](demo.m4v)
+![demo gif](demo.mp4)
 
 
 ## dep

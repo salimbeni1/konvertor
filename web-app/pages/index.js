@@ -151,6 +151,7 @@ export default function Home() {
 
     <div className={styles.about}>
       <p>
+        If a picture is worth a thousand words, then a video is worth a million.
         Convert easily for free your .JPG .PNG .EXR images to .MP4 .MOV videos.
         Enjoy your conversion :)
       </p>
@@ -171,6 +172,15 @@ export default function Home() {
           total size : +- {Math.round(files.reduce(
                   ((previousValue, currentValue) =>  previousValue + currentValue.size) ,0)*1e-6) } MB
           </Typography>
+
+          { files.length !== 0 ?
+          <div style={{width: '100%' , display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+          
+          <svg width="157" height="110" viewBox="0 0 157 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path className={styles.animated_path} id="tick" d="M7 43L57 99L150 7" strokeWidth='14' strokeLinecap='round'/>
+          </svg>
+          
+          </div>  : <></> }
       </div>
     </Grid>
     </Grow >

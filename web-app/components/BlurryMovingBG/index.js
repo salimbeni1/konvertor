@@ -3,6 +3,7 @@ import styles from './BlurryMovingBG.module.scss'
 
 function BlurryMovingBG ()  {
     return (
+        <>
     <div className={styles.bgImage}>
         <div className={styles.shape1}></div>
         <div className={styles.shape2}></div>
@@ -11,6 +12,13 @@ function BlurryMovingBG ()  {
         <div className={styles.shape5}></div>
         <div className={styles.shape6}></div>
     </div>
+
+
+    <div className={styles.bgbar}> 
+    </div>
+    
+    </>
+
     )
 }
 

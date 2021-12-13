@@ -47,6 +47,20 @@
 }
 
 
+.error {
+  color: red;
+  background-color: rgba($color: red, $alpha: 0.15);
+  padding: 10px;
+  border-radius: 5px;
+  // animation: 0.5s ease-in-out 2 error_alarm;
+}
+
+@keyframes error_alarm {
+  to {
+    background-color: rgba($color: red, $alpha: 1);
+  }
+}
+
 
 .howtouse {
 

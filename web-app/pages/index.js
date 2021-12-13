@@ -38,6 +38,7 @@ export default function Home() {
   const [crf, setCrf] = useState(18)
   const [outputName, setOutputName] = useState('out.mp4')
   const [gamma, setGamma] = useState(2.2)
+  const [error, setError] = useState("")
 
 
   const load = async () => {
@@ -57,6 +58,63 @@ export default function Home() {
   const getFiles = (f) => {
     console.log('getting files');
     setFiles(f);
+    setError("");
+
+
+    if(f.length > 2) {
+
+      const f_1 = f[0].name
+
+      let pos_nb
+      let nb_nb
+          
+      f.forEach(file => {
+            
+            let found_start = false
+            for(let i = 0; i < f_1.length; i++){
+              if(found_start){
+                if(f_1[i] === file.name[i]){
+                  nb_nb = nb_nb? Math.max(i-pos_nb , nb_nb) : i-pos_nb
+                  break;
+                }
+              }else if(f_1[i] !== file.name[i]){
+                pos_nb = pos_nb? Math.min(i, pos_nb) : i
+                found_start = true
+              }
+            }
+
+      });
+
+      const input_seq_formated = f_1.slice(0,pos_nb)+"%0"+nb_nb+"d"+f_1.slice(pos_nb+nb_nb)
+
+      const correct_name_1 = f.every( (el) => { return el.name.slice(0,pos_nb) ===  f_1.slice(0,pos_nb)} )
+      const correct_name_2 = f.every( (el) => { return el.name.slice(pos_nb+nb_nb) ===  f_1.slice(pos_nb+nb_nb)})
+
+      if ( ! correct_name_1 || ! correct_name_2){
+        // alert('wrong file name format , look at the guide below')
+        setError("wrong file names, plz look at guide below")
+        return
+      }
+
+      let min_nb
+      let max_nb
+
+      f.forEach( (file) => {
+            const nb = parseInt(file.name.slice(pos_nb , pos_nb+ nb_nb))
+            min_nb = min_nb? Math.min(nb,min_nb) : nb;
+            max_nb = max_nb? Math.max(nb,max_nb) : nb;
+            }
+      )
+
+      if( max_nb -  min_nb !== f.length-1) {
+        setError("wrong file names (look at number) , plz look at guide below")
+        return
+      }
+
+    }
+
+
+
   }
 
 
@@ -119,7 +177,7 @@ export default function Home() {
           }
         )
 
-        console.log(min_nb);
+        // console.log(min_nb);
 
         await ffmpeg.current.run(
           '-y',
@@ -172,15 +230,14 @@ export default function Home() {
           total size : +- {Math.round(files.reduce(
                   ((previousValue, currentValue) =>  previousValue + currentValue.size) ,0)*1e-6) } MB
           </Typography>
-
-          { files.length !== 0 ?
+          
           <div style={{width: '100%' , display:'flex', alignItems: 'center', justifyContent: 'center'}}>
-          
-          <svg width="157" height="110" viewBox="0 0 157 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path className={styles.animated_path} id="tick" d="M7 43L57 99L150 7" strokeWidth='14' strokeLinecap='round'/>
-          </svg>
-          
-          </div>  : <></> }
+            { ( files.length !== 0 ) && error === ""  ?
+            <svg width="157" height="110" viewBox="0 0 157 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path className={styles.animated_path} id="tick" d="M7 43L57 99L150 7" strokeWidth='14' strokeLinecap='round'/>
+            </svg> : <></> }
+            { error !== "" ? <p className={styles.error}> {error} </p> :  <></>}
+           </div> 
       </div>
     </Grid>
     </Grow >

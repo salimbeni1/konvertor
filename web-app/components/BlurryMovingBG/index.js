@@ -12,10 +12,6 @@ function BlurryMovingBG ()  {
         <div className={styles.shape5}></div>
         <div className={styles.shape6}></div>
     </div>
-
-
-    <div className={styles.bgbar}> 
-    </div>
     
     </>
 

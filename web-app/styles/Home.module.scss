@@ -91,7 +91,7 @@
     border: 1px solid rgba($color: white, $alpha: 0.2);
     border-radius: 20px;
     padding: 15px;
-    background-color:  rgba(250, 250, 250, 0.3);
+    background-color:  rgb(250, 250, 250);
   }
 
   
@@ -121,4 +121,25 @@
     margin-right: 10px;
   }
 
+}
+
+.extraInfo {
+  background-color: rgba($color: white, $alpha: 0.7 );
+  /*width: 200vw;
+  transform-box: border-box;
+  transform-origin: bottom left;
+  transform: rotate(-5deg);*/
+
+}
+
+.svgextraInfo {
+
+  width: 100%;
+  height: 8vw;
+  display:block;
+  
+
+  polygon {
+    fill: rgba($color: white, $alpha: 0.7 );
+  }
 }

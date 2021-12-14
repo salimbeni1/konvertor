@@ -325,6 +325,17 @@ export default function Home() {
     </Grow>
 
     </Grid>
+
+
+
+
+
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" className={styles.svgextraInfo} viewBox="0 0 100 100" preserveAspectRatio="none">
+      <polygon  points="0,100 100,0 100,100"/>
+    </svg>
+    <div className={styles.extraInfo}>
     
 
     <div id="howtouse" className={styles.howtouse}>
@@ -400,6 +411,8 @@ export default function Home() {
           to video convertors online. So I decided to make my own.
         </p>
         <p>Have fun guys !</p>
+    </div>
+
     </div>
 
     </ThemeProvider>

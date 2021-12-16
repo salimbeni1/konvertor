@@ -177,6 +177,10 @@ export default function Home() {
           }
         )
 
+        // clip crf 
+        crf = crf < 1 ? 1 : Math.floor(crf); 
+        crf = crf > 50 ? 50 : Math.floor(crf); 
+
         // console.log(min_nb);
 
         await ffmpeg.current.run(
@@ -207,7 +211,7 @@ export default function Home() {
     <ThemeProvider theme={theme}>
 
 
-    <div className={styles.about}>
+    <div className={styles.intro}>
       <p>
         If a picture is worth a thousand words, then a video is worth a million.
         Convert easily for free your .JPG .PNG .EXR images to .MP4 .MOV videos.
@@ -404,6 +408,10 @@ export default function Home() {
 
     </div>
 
+
+    <svg xmlns="http://www.w3.org/2000/svg"  className={styles.svgabout} viewBox="0 0 100 100" preserveAspectRatio="none">
+      <polygon  points="0,100 0,0 100,100"/>
+    </svg>
     <div id="about" className={styles.about}>
         <h1>About</h1> 
         <p>
@@ -412,7 +420,7 @@ export default function Home() {
         </p>
         <p>Have fun guys !</p>
     </div>
-
+    
     </div>
 
     </ThemeProvider>

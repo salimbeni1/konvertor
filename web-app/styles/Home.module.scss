@@ -99,10 +99,7 @@
 }
 
 
-
-
-.about {
-
+.intro {
   display:flex;
   height:100%;
   width:100%;
@@ -120,8 +117,46 @@
     margin-left: 10px;
     margin-right: 10px;
   }
+}
+
+
+.about {
+
+  display:flex;
+  height:100%;
+  width:100%;
+  justify-content:center;
+  align-items:center;
+  flex-direction: column;
+  background-color: white;
+  padding-bottom: 7vh;
+
+  h1 {
+    font-family: 'Fredoka One', cursive;
+  }
+
+  p {
+    color: rgba(100, 100, 100, 1);
+    max-width: 500px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 
 }
+
+.svgabout {
+
+  width: 100%;
+  height: 8vw;
+  display:block;
+  
+
+  polygon {
+    fill: rgba($color: white, $alpha: 1);
+  }
+}
+
+
 
 .extraInfo {
   background-color: rgba($color: white, $alpha: 0.7 );

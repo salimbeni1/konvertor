@@ -1,10 +1,13 @@
+$my-blend-mode : color-dodge;
+
+
 .bgImage {
     position: fixed;
     z-index: -2;
     overflow: hidden;    
     //background-image: url("../public/rainbow_pastel.png");
-    filter: blur(50px);
-    -webkit-filter: blur(50px);
+    //filter: blur(50px);
+    //-webkit-filter: blur(50px);
     
     height: 100vh;
     width: 100vw;
@@ -12,6 +15,20 @@
     background-position: center;
     background-repeat: round;
     background-size: cover;
+
+    isolation: isolate;
+
+    .noisebg{
+      position: absolute;
+      background: url("./noise.svg");
+      width: 100vw;
+      height: 100vh;
+      filter: contrast(170%) brightness(1000%);
+      //background-color: white;
+      
+      //mix-blend-mode: $my-blend-mode;
+      //mix-blend-mode: hue;
+    }
   
     .shape1 {
       position: absolute;
@@ -19,9 +36,10 @@
       top: 22vw;
       height: 60vw;
       width: 60vw;
-      border-radius: 50%;
-      background-color: rgba(248, 37, 37, 0.5);
+      border-radius: 0%;
+      background: radial-gradient(rgba(248, 37, 37, 1.0), transparent 50%);
       animation: 60s ease infinite scale-1;
+      mix-blend-mode: $my-blend-mode;
     }
   
     .shape2 {
@@ -30,9 +48,10 @@
       top: 70vh;
       height: 50vw;
       width: 50vw;
-      border-radius: 50%;
-      background-color: rgba(248, 181, 56, 0.5);
+      border-radius: 0%;
+      background: radial-gradient(rgba(248, 181, 56, 1.0), transparent 50%);
       animation: 50s ease infinite scale-2;
+      mix-blend-mode: $my-blend-mode;
     }
   
     .shape3 {
@@ -41,9 +60,10 @@
       top: -2%;
       height: 100vw;
       width: 100vw;
-      border-radius: 50%;
-      background-color: rgba(244, 255, 87, 0.5);
+      border-radius: 0%;
+      background: radial-gradient(rgba(244, 255, 87, 1.0), transparent 50%);
       animation: 100s ease infinite scale-3;
+      mix-blend-mode: $my-blend-mode;
     }
   
     .shape4 {
@@ -52,9 +72,10 @@
       top: 60%;
       height: 400px;
       width: 400px;
-      border-radius: 50%;
-      background-color: rgba(100, 250, 81, 0.5);
+      border-radius: 0%;
+      background: radial-gradient(rgba(100, 250, 81, 1.0), transparent 50%);
       animation: 30s ease infinite scale-4;
+      mix-blend-mode: $my-blend-mode;
     }
   
     .shape5 {
@@ -63,9 +84,14 @@
       top: -25vw;
       height: 80vw;
       width: 80vw;
-      border-radius: 50%;
-      background-color: rgba(81, 210, 250, 0.5);
+      border-radius: 0%; 
+      //filter: contrast(170%) brightness(1000%);
+      background: radial-gradient(rgba(81, 210, 250, 1.0), transparent 50%);
+      //background: linear-gradient(0deg, rgba(0,0,255,1.0), rgba(0,0,0,1.0)),
+      //url("data:image/svg+xml,%3Csvg viewBox='0 0 224 224' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+
       animation: 20s ease infinite scale-5;
+      mix-blend-mode: $my-blend-mode;
     }
   
   
@@ -75,9 +101,10 @@
       top: 30%;
       height: 400px;
       width: 400px;
-      border-radius: 50%;
-      background-color: rgba(160, 81, 250, 0.5);
+      border-radius: 0%;
+      background: radial-gradient(rgba(160, 81, 250, 1.0), transparent 50%);
       animation: 50s ease infinite scale-6;
+      mix-blend-mode: $my-blend-mode;
     }
   
   }

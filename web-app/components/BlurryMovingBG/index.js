@@ -1,10 +1,13 @@
 import React from 'react'
 import styles from './BlurryMovingBG.module.scss'
 
+
+
 function BlurryMovingBG ()  {
     return (
         <>
-    <div className={styles.bgImage}>
+    <div className={styles.bgImage} >
+        <div className={styles.noisebg}></div>
         <div className={styles.shape1}></div>
         <div className={styles.shape2}></div>
         <div className={styles.shape3}></div>

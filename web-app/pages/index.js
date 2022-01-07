@@ -117,6 +117,8 @@ export default function Home() {
   return  <>
 
   <BlurryMovingBG/>
+
+  
   <Header/>
   
   <div className={styles.allPage}>
@@ -159,6 +161,7 @@ export default function Home() {
 
 
   </div>
+    
   
   </>
 

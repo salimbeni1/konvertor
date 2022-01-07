@@ -7,23 +7,17 @@ function Header() {
     const [overEmoji, setOverEmoji] = useState(false)
 
     return (
-        <header className={styles.header}
-                onMouseEnter = {() => 
-                    {setOverEmoji( overEmoji => !overEmoji)}}
-                onMouseLeave = {() => 
-                    {setOverEmoji( overEmoji => !overEmoji)}}>
+        <header className={styles.header}>
 
-            <h3 className={styles.left}>
-                {overEmoji ? "0.0" : "-.-" }
-            </h3>
+            <div className={styles.headerctn}>
+                <h1>Convert-me-please</h1>
 
-            <h1 className={styles.center}>Convert Me Please</h1>
-
-            <div className={styles.right}>
-            <a href="#howtouse"><h3>how to use</h3></a>
-            
-            <a href="#about"><h3>about</h3></a>
+                <h2>convert</h2>
+                <h2>how-to-use</h2>
+                <h2>about</h2>
             </div>
+
+            
 
         </header>
     )

@@ -115,52 +115,10 @@ export default function Home() {
   }
 
   return  <>
-
-  <BlurryMovingBG/>
-
   
   <Header/>
   
-  <div className={styles.allPage}>
-
-  <div className={styles.container}>
-
-    <div className={styles.menu}>
-
-      <div className={styles.btnConvertApp} 
-           onClick={ () => setAppSelected("CONVERT")}>
-        CONVERT
-      </div>
-
-      <div className={styles.btnHowToUse}
-           onClick={ () => setAppSelected("HOW TO USE")}>
-        HOW TO USE
-      </div>
-
-      <div className={styles.btnAbout}
-           onClick={ () => setAppSelected("ABOUT")}>
-        ABOUT
-      </div>
-
-      <div className={styles.btnContact}
-           onClick={ () => setAppSelected("CONTACT")}>
-        CONTACT
-      </div>
-      
-    </div>
-
-
-    <div className={styles.app}>
-      {
-        getWhatToDisplay()
-      }
-    </div>
-
-
-  </div>
-
-
-  </div>
+  
     
   
   </>

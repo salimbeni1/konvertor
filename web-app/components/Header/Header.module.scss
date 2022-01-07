@@ -1,60 +1,19 @@
 .header {
-    width:100%;  
-    padding: 30px;
-    border-bottom: 2px solid rgba(0, 0, 0, 1);
-    //margin-bottom: 30px;
-    display: flex;
+
+    display: grid;
     align-items: center;
-    justify-content: center;
-    
-    flex-direction: column;
 
-   @media screen and (min-width: 768px) {
-       flex-direction: row;
-       justify-content: space-between;
 
-   } 
-    
-    h1 {
-        margin: 0px;
-        font-family: 'Fredoka One', cursive;
+    .headerctn{
+        //background-color: blue;
+        width: 80vw;
+        height: 100px;
+        border-bottom: 1px solid black;
+        display: flex;
+        margin-right: 10vw;
+        margin-left: 10vw;
     }
 
-    h3 {
-        margin: 0px;
-        
-        color: rgba(0, 0, 0, 1);
-        font-family: 'Fredoka One', cursive;
-    }
-
-    > * {
-        flex-shrink: 0;
-        @media screen and (min-width:768px) {
-            width: 30%;
-        }
-    }
-
-   
     
-}
 
-.left {
-    text-align: left;
-    
 }
-.center {
-    margin:0 auto;
-    
-    text-align: center;
-}
-
-.right {
- display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    h3 {
-        margin: 0 10px;
-    }
-}
-

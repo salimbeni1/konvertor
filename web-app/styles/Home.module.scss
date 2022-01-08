@@ -1,0 +1,266 @@
+.whyme{
+    padding: 0px 40px;
+
+    
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+    div{
+        display: grid;
+        place-items: center;
+        div{
+            height: 150px;
+            width: 150px;
+            background-color: yellow;
+        }
+
+        h3{
+            text-align: center;
+        }
+    }
+}
+
+.about {
+
+    margin: 10px 15vw;
+    border: 2px solid #dbdbdb;
+    border-radius: 25px;
+    display: grid;
+    place-items: center;
+    position: relative;
+
+    h1{
+        display: grid;
+        place-items: center;
+        font-family: "Poppins", sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1.4;
+        text-align: center;
+    }
+
+    p{
+        padding: 0px 20px;
+        font-family: "Roboto", sans-serif;
+        color: #777 ;
+        letter-spacing: 0.5px;
+        line-height: 140%;
+        font-size: 1rem;
+        font-weight: 900;
+    }
+
+    .aboutimr{
+        position: absolute;
+        height: 300px;
+        width: 150px;
+        background-color: yellow;
+        bottom: 0;
+        right: -50px;
+    }
+
+    .aboutiml{
+        position: absolute;
+        bottom: 0;
+        left: -70px;
+        height: 200px;
+        width: 200px;
+        background-color: yellow;
+    }
+}
+
+
+.howtouse{
+    padding: 0px 40px;
+    margin-bottom: 50px;
+    display: grid;
+    place-items: center;
+
+
+    h1{
+        display: grid;
+        place-items: center;
+        font-family: "Poppins", sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1.4;
+        text-align: center;
+    }
+
+    h3{
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        line-height: 1.4;
+    }
+
+    p{
+        padding: 0px 20px;
+        font-family: "Roboto", sans-serif;
+        color: #777 ;
+        letter-spacing: 0.5px;
+        line-height: 140%;
+        font-size: 1rem;
+        font-weight: 900;
+
+    }
+
+    .note{
+
+        max-width: 500px;
+        border-radius: 10px;
+        padding: 16px 30px;
+        border: 2px solid #26c644;
+
+    }
+
+    dl{
+        padding: 0px 20px;
+        font-family: "Roboto", sans-serif;
+        color: #777 ;
+        letter-spacing: 0.5px;
+        line-height: 140%;
+        font-size: 1rem;
+        font-weight: 900;
+
+        dt{
+            color: black ;
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            //line-height: 1.4;
+        }
+
+        dd{
+
+        }
+    }
+
+}
+
+.app{
+    padding: 0px 40px;
+
+    margin-bottom: 50px;
+
+
+    h2{
+        display: grid;
+        place-items: center;
+        padding: 0px 15vw;
+        font-family: "Poppins", sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1.4;
+        text-align: center;
+
+    }
+}
+
+
+
+.frontpage{
+
+    padding: 0px 40px;
+    margin-top: 30px;
+    
+
+    display: flex;
+    flex-direction: row;
+
+    //height: 60vh;
+    width: 100vw;
+
+    .frontpagetext{
+
+        width: 50vw;
+        
+
+        display: grid;
+        place-items: center;
+        margin-bottom: 20px;
+
+        h1{
+            font-family: "Poppins", sans-serif;
+            font-size: 60px;
+            font-weight: 700;
+        }
+
+        .intro {
+            padding: 0px 20px;
+            font-family: "Roboto", sans-serif;
+            color: #777 ;
+            letter-spacing: 0.5px;
+            line-height: 190%;
+            font-size: 1rem;
+            font-weight: 900;
+        }
+    }
+    
+    .frontpageimage{
+        padding: 0px 20px;
+        width: 50vw;
+        background-color: yellow;
+    
+    }
+}
+
+
+.frontpageimagebot{
+    width: 100vw;
+    height: 150px;
+    background-color: yellow;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FANCY BUTTON */
+
+.fancybtn{
+    outline: none;
+    text-decoration: none !important;
+    user-select: none;
+    background-color: transparent;
+    color: #26c644;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 16px 30px;
+    border: 2px solid #26c644;
+    font-family: "Poppins", sans-serif;
+
+    transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+}
+
+.fancybtn:hover{
+    color: #fff;
+    background-color: #26c644;
+    border-color: #26c644;
+}
+.fancybtn:active{
+    color: #fff;
+    background-color: #26c644;
+    border-color: #26c644;
+}
+.fancybtn:focus{
+    box-shadow: 0 0 0 0.2rem rgb(38 198 68 / 50%);
+}
+
+.fancybtn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}

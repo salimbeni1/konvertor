@@ -5,24 +5,44 @@ import Header from '../components/Header'
 import BlurryMovingBG from '../components/BlurryMovingBG'
 import { useState } from 'react'
 
+import { useEffect } from 'react';
+
 export default function Home() {
 
   const [appSelected, setAppSelected] = useState()
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset);
+    // clean up code
+    window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
 
   const getAbout = () => {
-    return <div id="about" className={styles.about}>
-        <h1>About</h1> 
+    return <>
+    <a class="anchor" id="about"></a>
+    <div className={styles.about}>
+      
+        <h1>Why did I created this ..</h1> 
         <p>
           I was bored of those paid and slow version of image
-          to video convertors online. So I decided to make my own.
+          to video convertors online. So I decided to make my own...
         </p>
         <p>Have fun guys !</p>
+
+        <div className={styles.aboutiml}></div>
+        <div className={styles.aboutimr}></div>
     </div>
+    </>
   }
 
   const getHowToUse = () => {
-    return <div id="howtouse" className={styles.howtouse}>
+    return <>
+    <a class="anchor" id="howtouse"></a>
+    <div id="howtouse" className={styles.howtouse}>
         <h1>How to use</h1> 
 
         <h3> Quick guide </h3>
@@ -87,6 +107,7 @@ export default function Home() {
         </dl>
 
     </div>
+    </>
   }
 
 
@@ -117,9 +138,61 @@ export default function Home() {
   return  <>
   
   <Header/>
-  
-  
+
+  <div className={styles.frontpage}>
     
+      <div className={styles.frontpagetext}>
+        <h1>
+          Convert easily,<br/>
+          all images to videos.
+        </h1>
+        {getIntro()}
+        <a href='#app' className={styles.fancybtn}> CONVERT FOR FREE NOW</a>
+      </div>
+
+      <div className={styles.frontpageimage}>
+        
+      </div>
+
+  </div>
+  <div className={styles.frontpageimagebot}>    </div>
+
+  <a class="anchor" id="app"></a>
+  <div id="app" className={styles.app}>
+    <h2> A fully featured converter that allows you to make a video out of any sequences of images </h2>
+    <ConvertorApp/>
+  </div>
+
+
+  <a class="anchor" id="whyme"></a>
+  <div id="whyme" className={styles.whyme}>
+
+    <div >
+        <div></div>
+        <h3> as fast as your machine </h3>
+    </div>
+
+    <div >
+        <div></div>
+        <h3> nothing stored on servers </h3>
+    </div>
+
+    <div >
+        <div></div>
+        <h3> no uploads needed </h3>
+    </div>
+
+  </div>
+
+  {getHowToUse()}
+
+  {getAbout()}
+
+
+  <footer>
+    
+  </footer>
+  
   
   </>
 

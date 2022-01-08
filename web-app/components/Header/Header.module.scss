@@ -1,19 +1,116 @@
+.scrolledHeader{
+    border-bottom: 1px solid rgb(235, 235, 235); box-shadow: rgba(0, 0, 0, 0.07) 0px 4px 10px 0px;
+
+}
 .header {
 
-    display: grid;
+    
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 50px;
     align-items: center;
 
+    background-color: white;
 
-    .headerctn{
-        //background-color: blue;
-        width: 80vw;
-        height: 100px;
-        border-bottom: 1px solid black;
-        display: flex;
-        margin-right: 10vw;
-        margin-left: 10vw;
-    }
+    font-family: "Poppins", sans-serif;
+
 
     
 
+    .logo{
+        color: #26c644;
+    }
+
+    .btn{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+
+        .btnul{
+
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            
+
+            li{
+                cursor: pointer;
+
+                .featuresmenu {
+                    display: none;
+                }
+
+            }
+
+            li:hover {
+                color: rgba(0,0,0,0.5);
+
+                .featuresmenu {
+                    background-color: white;
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 10px;
+                    border: 1px solid #ebebeb;
+                    box-shadow: 0px 10px 25px 0px rgb(0 0 0 / 10%);
+
+                    a:hover{
+                        color: #26c644 ;
+                    }
+                }
+            }
+
+        }
+
+        a{
+            padding: 10px 30px;
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+/* FANCY BUTTON */
+
+.fancybtn{
+    outline: none;
+    text-decoration: none !important;
+    user-select: none;
+    background-color: transparent;
+    color: #26c644;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 16px 30px;
+    border: 2px solid #26c644;
+    font-family: "Poppins", sans-serif;
+
+    transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+}
+
+.fancybtn:hover{
+    color: #fff;
+    background-color: #26c644;
+    border-color: #26c644;
+}
+.fancybtn:active{
+    color: #fff;
+    background-color: #26c644;
+    border-color: #26c644;
+}
+.fancybtn:focus{
+    box-shadow: 0 0 0 0.2rem rgb(38 198 68 / 50%);
+}
+
+.fancybtn:not(:disabled):not(.disabled) {
+    cursor: pointer;
 }

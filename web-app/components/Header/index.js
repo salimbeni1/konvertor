@@ -18,8 +18,7 @@ function Header() {
       }, []);
 
 
-      console.log(offset=== 0); 
-
+    
     return (
         <nav className={`${styles.header} ${(offset=== 0)?"":styles.scrolledHeader}`}>
 

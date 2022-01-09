@@ -4,6 +4,8 @@ import ConvertorApp from '../components/ConvertorApp'
 import Header from '../components/Header'
 import BlurryMovingBG from '../components/BlurryMovingBG'
 import { useState } from 'react'
+import SVGmain1  from '../svgs/SVGmain1'
+import { get_icon } from '../svgs/get_icon'
 
 import { useEffect } from 'react';
 
@@ -33,8 +35,8 @@ export default function Home() {
         </p>
         <p>Have fun guys !</p>
 
-        <div className={styles.aboutiml}></div>
-        <div className={styles.aboutimr}></div>
+        <div className={styles.aboutiml}>{get_icon("10")}</div>
+        <div className={styles.aboutimr}>{get_icon("11")}</div>
     </div>
     </>
   }
@@ -121,19 +123,6 @@ export default function Home() {
     </div>
   }
 
-  
-  const getWhatToDisplay = () => {
-    switch(appSelected){
-      
-      case "HOW TO USE" : return getHowToUse()
-      case "ABOUT" : return getAbout()
-      case "CONTACT" : return  <>no contacts for you :P</>
-      case "CONVERT" :
-      default : 
-      return <ConvertorApp/>
-    }
-    
-  }
 
   return  <>
   
@@ -151,11 +140,13 @@ export default function Home() {
       </div>
 
       <div className={styles.frontpageimage}>
-        
+        <SVGmain1/>
       </div>
 
   </div>
-  <div className={styles.frontpageimagebot}>    </div>
+  <div className={styles.frontpageimagebot}>  
+    
+  </div>
 
   <a class="anchor" id="app"></a>
   <div id="app" className={styles.app}>
@@ -168,17 +159,17 @@ export default function Home() {
   <div id="whyme" className={styles.whyme}>
 
     <div >
-        <div></div>
+        <div>{get_icon("1")}</div>
         <h3> as fast as your machine </h3>
     </div>
 
     <div >
-        <div></div>
+        <div>{get_icon("2")}</div>
         <h3> nothing stored on servers </h3>
     </div>
 
     <div >
-        <div></div>
+        <div>{get_icon("3")}</div>
         <h3> no uploads needed </h3>
     </div>
 

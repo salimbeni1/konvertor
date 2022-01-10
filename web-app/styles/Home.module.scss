@@ -1,7 +1,9 @@
 .whyme{
     padding: 0px 40px;
 
-    
+    overflow:hidden;
+
+    width: 100vw;
 
     display: flex;
     flex-direction: row;
@@ -23,6 +25,8 @@
 }
 
 .about {
+
+    //overflow: hidden;
 
     margin: 10px 15vw;
     border: 2px solid #dbdbdb;
@@ -157,6 +161,10 @@
 }
 
 
+.maingrid{
+    display: grid;
+    place-items: center;
+    width: 100vw;
 
 .frontpage{
 
@@ -169,6 +177,8 @@
 
     //height: 60vh;
     width: 100vw;
+    max-width: 1500px;
+    
 
     .frontpagetext{
 
@@ -203,6 +213,7 @@
     
     }
 }
+}
 
 
 .frontpageimagebot{
@@ -211,6 +222,94 @@
     //background-color: yellow;
 }
 
+@media screen and (max-width: 1200px) {
+    .maingrid{
+    .frontpage{
+        .frontpagetext{
+            h1{
+                font-size: 53px;
+            }
+        }
+    }
+}
+
+}
+
+
+@media screen and (max-width: 1100px) {
+    .maingrid{
+    .frontpage{
+
+
+        .frontpagetext{
+            width: 50vw;
+    
+            h1{
+                font-size: 50px;
+                font-weight: 700;
+            }
+        }
+
+        .frontpageimage{
+            width: 60vw;
+        }
+    }
+}
+
+}
+
+
+@media screen and (max-width: 925px) {
+    .maingrid{
+    .frontpage{
+
+        flex-direction: column;
+
+        .frontpagetext{
+            width: 80vw;
+        }
+
+        .frontpageimage{
+            width: 80vw;
+        }
+    }
+}
+
+    .frontpageimagebot{
+        width: 100vw;
+        height: 5px;
+        //background-color: yellow;
+    }
+
+
+
+    .about {
+
+        .aboutimr{
+            display: none;
+        }
+        .aboutiml{
+            display: none;
+        }
+
+    }
+
+
+}
+
+
+@media screen and (max-width: 550px) {
+
+    .app{
+        
+        h2{
+
+            font-size: 20px;
+    
+        }
+    }
+
+}
 
 
 

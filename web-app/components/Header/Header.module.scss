@@ -75,6 +75,28 @@
 }
 
 
+@media screen and (max-width: 1100px) {
+    .header {
+
+
+        .btn{
+            .btnul{
+                display: none;
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header {
+
+        flex-direction: column;
+    }
+
+}
+
+
 
 
 

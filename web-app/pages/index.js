@@ -25,7 +25,7 @@ export default function Home() {
 
   const getAbout = () => {
     return <>
-    <a class="anchor" id="about"></a>
+    <a className="anchor" id="about"></a>
     <div className={styles.about}>
       
         <h1>Why did I created this ..</h1> 
@@ -43,7 +43,7 @@ export default function Home() {
 
   const getHowToUse = () => {
     return <>
-    <a class="anchor" id="howtouse"></a>
+    <a className="anchor" id="howtouse"></a>
     <div id="howtouse" className={styles.howtouse}>
         <h1>How to use</h1> 
 
@@ -128,6 +128,8 @@ export default function Home() {
   
   <Header/>
 
+  
+  <div className={styles.maingrid}>
   <div className={styles.frontpage}>
     
       <div className={styles.frontpagetext}>
@@ -144,18 +146,19 @@ export default function Home() {
       </div>
 
   </div>
+  </div>
   <div className={styles.frontpageimagebot}>  
     
   </div>
 
-  <a class="anchor" id="app"></a>
+  <a className="anchor" id="app"></a>
   <div id="app" className={styles.app}>
     <h2> A fully featured converter that allows you to make a video out of any sequences of images </h2>
     <ConvertorApp/>
   </div>
 
 
-  <a class="anchor" id="whyme"></a>
+  <a className="anchor" id="whyme"></a>
   <div id="whyme" className={styles.whyme}>
 
     <div >

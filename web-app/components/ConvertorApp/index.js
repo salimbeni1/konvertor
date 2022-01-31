@@ -1,6 +1,6 @@
 import DropZone from '../DropZone'
 import ConvertButton from '../ConvertButton'
-import {Button, Grid ,Typography , Grow, LinearProgress , InputAdornment, TextField ,  CircularProgress , ThemeProvider} from '@mui/material'
+import {Button , Slider, Grid ,Typography , Grow, LinearProgress , InputAdornment, TextField ,  CircularProgress , ThemeProvider} from '@mui/material'
 import { useState , useEffect , useRef} from 'react'
 import styles from './convertorApp.module.scss'
 // FFMPEG , converting tools
@@ -39,6 +39,7 @@ export default function ConvertorApp() {
   const [outputName, setOutputName] = useState('out.mp4')
   const [gamma, setGamma] = useState(2.2)
   const [error, setError] = useState("")
+  const [selectedFrame, setSelectedFrame] = useState(0);
 
 
   const load = async () => {
@@ -204,11 +205,39 @@ export default function ConvertorApp() {
     setLoading(false)
   }
 
+
+  const convertGamma = async () =>{
+
+    // TODO : TRYING TO APPLY GAMMA CORRECTION for preview
+
+    await ffmpeg.current.run(
+      '-y',
+      '-gamma' , gamma.toString(),
+      '-f', 'image2',
+      '-r', frameRate.toString(),
+      '-start_number', min_nb.toString(),
+      '-i', input_seq_formated ,
+      '-vcodec','libx264',
+      '-crf', crf.toString(),
+      '-pix_fmt', 'yuv420p',
+      outputName
+      )
+
+    const result = ffmpeg.current.FS('readFile', outputName);
+    setOutputVideo(URL.createObjectURL(new Blob([result.buffer], { type: 'video/mp4' })))
+
+  }
+
   
   return ready? (
     <>
 
     <ThemeProvider theme={theme}>
+
+
+      <div className={styles.cardctn}>
+
+      
 
     <Grid container spacing="10" 
           direction="row"
@@ -233,9 +262,50 @@ export default function ConvertorApp() {
             </svg> : <></> }
             { error !== "" ? <p className={styles.error}> {error} </p> :  <></>}
            </div> 
-      </div>
+        </div>
     </Grid>
     </Grow >
+
+    <Grid item>
+
+      <div className={styles.card}>
+
+      
+        <Typography>
+          <p >frame preview</p>
+        </Typography>
+
+        {files.length === 0 ? 
+          <>No files</>:
+          files[selectedFrame].name.match('[exr|EXR]$')?<p>no preview for EXR images , working on it :)</p>:
+          <img src={URL.createObjectURL(files[selectedFrame])} style={{borderRadius:"5px"}}/>
+        }
+
+
+        <Typography>
+          <p >Select a Frame : </p>
+        </Typography>
+
+        <Slider
+        color="neutral"
+          defaultValue={0}
+          step={1}
+          marks
+          min={0}
+          max={files.length-1}
+          valueLabelDisplay="auto"
+          onChange={(e) => { 
+            if(e.target.value > 0)
+              setSelectedFrame( e.target.value )
+          } }
+        />
+
+
+
+      </div>
+
+    </Grid>
+
 
     <Grow
     in={ready}
@@ -320,7 +390,7 @@ export default function ConvertorApp() {
     </Grow>
 
     </Grid>
-
+    </div>
     </ThemeProvider>
 
     </>

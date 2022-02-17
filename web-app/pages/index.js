@@ -100,7 +100,7 @@ export default function Home() {
           </div>
 
           <div className={styles.line}  ></div>
-
+          
           <div>
             <h3> Parameters </h3>
 
@@ -164,8 +164,13 @@ export default function Home() {
   </div>
 
 
-  <div className={styles.frontpageimagebot}>  
-  </div>
+  <div className={styles.frontpageimagebot}>  </div>
+  <div className={styles.frontpageimagebot}>  </div>
+  <div className={styles.frontpageimagebot}>  </div>
+  <div className={styles.frontpageimagebot}>  </div>
+  <div className={styles.frontpageimagebot}>  </div>
+  <div className={styles.frontpageimagebot}>  </div>
+  <div className={styles.frontpageimagebot}>  </div>
 
   <a className="anchor" id="app"></a>
   <div id="app" className={styles.app}>

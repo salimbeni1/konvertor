@@ -245,9 +245,12 @@
 
 
 .frontpageimagebot{
+    margin-top: 1px;
+    //border-top: 2px solid black;
+    //border-bottom: 2px solid black;
     width: 100vw;
-    height: 150px;
-    //background-color: yellow;
+    height: 3px;
+    background-color: var(--color1_1);
 }
 
 @media screen and (max-width: 1200px) {

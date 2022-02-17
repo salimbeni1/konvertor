@@ -233,6 +233,7 @@ export default function ConvertorApp() {
     <>
 
     <ThemeProvider theme={theme}>
+    <Typography>
 
 
       <div className={styles.cardctn}>
@@ -242,24 +243,30 @@ export default function ConvertorApp() {
     <Grid container spacing="10" 
           direction="row"
           justifyContent="center"
-          alignItems="center"
+          alignItems="flex-start"
     >
     <Grow in={ready}>
     <Grid item >
         <div className={styles.card}>
-          <Typography>
+          
           <DropZone onFileUpload={getFiles} />
           total : {files.length} images
           <br/>
           total size : +- {Math.round(files.reduce(
                   ((previousValue, currentValue) =>  previousValue + currentValue.size) ,0)*1e-6) } MB
-          </Typography>
+          
           
           <div style={{width: '100%' , display:'flex', alignItems: 'center', justifyContent: 'center'}}>
             { ( files.length !== 0 ) && error === ""  ?
             <svg width="157" height="110" viewBox="0 0 157 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path className={styles.animated_path} id="tick" d="M7 43L57 99L150 7" strokeWidth='14' strokeLinecap='round'/>
-            </svg> : <></> }
+              <path className={styles.animated_path_1} id="tick" d="M7 43L57 99L150 7" strokeWidth='14' strokeLinecap='round'/>
+            </svg> : 
+            <svg width="157" height="110" viewBox="0 0 157 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path className={styles.animated_path} id="n1tick" d="M150 40 L40 150" strokeWidth='14' strokeLinecap='round'/>
+              <path className={styles.animated_path} id="n2tick" d="M40 40 L150 150" strokeWidth='14' strokeLinecap='round'/>
+            </svg>
+            
+            }
             { error !== "" ? <p className={styles.error}> {error} </p> :  <></>}
            </div> 
         </div>
@@ -272,17 +279,17 @@ export default function ConvertorApp() {
 
       
         <Typography>
-          <p >frame preview</p>
-        </Typography>
+          
+        
 
         {files.length === 0 ? 
-          <>No files</>:
-          files[selectedFrame].name.match('[exr|EXR]$')?<p>no preview for EXR images , working on it :)</p>:
-          <img src={URL.createObjectURL(files[selectedFrame])} style={{borderRadius:"5px"}}/>
+          <div className={styles.previewdiv} style={{width:"200px"}}>FRAME PREVIEW</div>:
+          files[selectedFrame].name.match('[exr|EXR]$')?<div className={styles.previewdiv} style={{width:"200px"}}>NO PREVIEW <br/> FOR EXR :/</div>:
+          <img src={URL.createObjectURL(files[selectedFrame])} style={{maxWidth:"250px", borderRadius:"5px"}}/>
         }
 
 
-        <Typography>
+        
           <p >Select a Frame : </p>
         </Typography>
 
@@ -299,6 +306,22 @@ export default function ConvertorApp() {
               setSelectedFrame( e.target.value )
           } }
         />
+
+
+      <p style={{ maxWidth : '100%' }} >
+                    only for .EXR images : 
+      </p>
+      
+      <TextField 
+        color="neutral"
+        style={{margin: '10px', maxWidth : '50%'}}
+        label={"gamma"}
+        size="small" type="number"
+        InputProps={{ inputProps: { min: 0, max: 100 } }}
+        value= {gamma}
+        onChange= {(e) => setGamma(e.target.value)}
+      />
+    
 
 
 
@@ -343,23 +366,9 @@ export default function ConvertorApp() {
           </div>
 
 
-         { files.length !== 0 && files[0].name.match('[exr|EXR]$')  && 
+         
           
-          <div style={{display: 'flex'}}>
-            <TextField 
-              color="neutral"
-              style={{margin: '10px', maxWidth : '30%'}}
-              label={"gamma"}
-              size="small" type="number"
-              InputProps={{ inputProps: { min: 0, max: 100 } }}
-              value= {gamma}
-              onChange= {(e) => setGamma(e.target.value)}
-            />
-
-            <p style={{margin: '10px', maxWidth : '100%' , color: 'rgba(100, 100, 100, 1)' }} >
-              only for .EXR
-            </p>
-          </div>}
+          
           
 
           <TextField
@@ -375,22 +384,28 @@ export default function ConvertorApp() {
               CONVERT
           </Button>
           <div style={{margin: '10px'}}>
-          { loading ? 
-          <LinearProgress color="neutral" variant="determinate" value={progress?.ratio*100} />
-          : outputVideo && <>
+          
+          <LinearProgress color="neutral" variant="determinate" value={progress?.ratio*100} />          
+          
+          {outputVideo? <>
           <video playsInline autoPlay muted loop src={outputVideo} width="100%" type="video/mp4" />
-          </>
-          }          
+          </>:<div className={styles.previewdiv}>VIDEO PREVIEW</div>}
+                   
           </div>
-          { !loading && outputVideo && <Button variant="outlined" onClick={dowload_video} color="neutral">
+          <Button variant="outlined" onClick={
+            () => {if (!outputVideo){
+                alert("video not ready")
+            } else {
+              dowload_video();}}} color="neutral">
               DOWNLOAD
-          </Button>}
+          </Button>
       </div>
     </Grid>
     </Grow>
 
     </Grid>
     </div>
+    </Typography>
     </ThemeProvider>
 
     </>

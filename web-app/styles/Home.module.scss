@@ -8,10 +8,22 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+
+    div:hover{
+
+        cursor: pointer;
+        div{
+            height: 170px;
+            width: 170px;
+        }
+    }
     
     div{
-        display: grid;
+        display: flex;
+        flex-direction: column;
         place-items: center;
+        //background-color: red;
+        //height: 450px;
         div{
             height: 150px;
             width: 150px;
@@ -20,6 +32,10 @@
 
         h3{
             text-align: center;
+        }
+
+        p{
+            max-width: 250px;
         }
     }
 }
@@ -53,6 +69,7 @@
         line-height: 140%;
         font-size: 1rem;
         font-weight: 900;
+        max-width: 300px;
     }
 
     .aboutimr{
@@ -80,6 +97,17 @@
     margin-bottom: 50px;
     display: grid;
     place-items: center;
+
+
+    .doublecolumn{
+        display: flex;
+    }
+
+    .line{
+        border-left: 2px solid var(--color1_1);
+        margin: 0px 20px;
+        //height: 1;
+    }
 
 
     h1{
@@ -114,7 +142,7 @@
         max-width: 500px;
         border-radius: 10px;
         padding: 16px 30px;
-        border: 2px solid #26c644;
+        border: 2px solid var(--color1_1);
 
     }
 
@@ -336,11 +364,11 @@
     text-decoration: none !important;
     user-select: none;
     background-color: transparent;
-    color: #26c644;
+    color: var(--color1_1);
     font-weight: 600;
     border-radius: 10px;
     padding: 16px 30px;
-    border: 2px solid #26c644;
+    border: 2px solid var(--color1_1);
     font-family: "Poppins", sans-serif;
 
     transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
@@ -348,16 +376,16 @@
 
 .fancybtn:hover{
     color: #fff;
-    background-color: #26c644;
-    border-color: #26c644;
+    background-color: var(--color1_1);
+    border-color: var(--color1_1);
 }
 .fancybtn:active{
     color: #fff;
-    background-color: #26c644;
-    border-color: #26c644;
+    background-color: var(--color1_1);
+    border-color: var(--color1_1);
 }
 .fancybtn:focus{
-    box-shadow: 0 0 0 0.2rem rgb(38 198 68 / 50%);
+    box-shadow: 0 0 0 0.2rem var(--color1_1_shadow);
 }
 
 .fancybtn:not(:disabled):not(.disabled) {

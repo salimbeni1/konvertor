@@ -28,7 +28,7 @@ export default function Home() {
     <a className="anchor" id="about"></a>
     <div className={styles.about}>
       
-        <h1>Why did I created this ..</h1> 
+        <h1>Why did I created this ....... </h1> 
         <p>
           I was bored of those paid and slow version of image
           to video convertors online. So I decided to make my own...
@@ -72,41 +72,56 @@ export default function Home() {
           As a consequence performances may <br/> varry on different machines
         </p>
 
-        <h3> Image file names </h3>
-        <p>
-          The images you want to convert must have the same file name<br/>
-          followed by the frame nb of the image.  <br/>
-        </p> 
-        <p className={styles.note}>
-          <b>Example 1 : </b> frame01.jpg frame02.jpg frame03.jpg <br/>
-          <b>Example 2 : </b> im04v2.jpg im05v2.jpg im06v2.jpg <br/>
-        </p>
+
+        <div className={styles.doublecolumn}>
+
+          <div>
+            <h3> Image file names </h3>
+            <p>
+              The images you want to convert must have the same file name<br/>
+              followed by the frame nb of the image.  <br/>
+            </p> 
+            <p className={styles.note}>
+              <b>Example 1 : </b> frame01.jpg frame02.jpg frame03.jpg <br/>
+              <b>Example 2 : </b> im04v2.jpg im05v2.jpg im06v2.jpg <br/>
+            </p>
 
 
-        <h3> Supported image types </h3>
+            <h3> Supported image types </h3>
 
-        <p>
-        Input : .PNG .JPG .EXR - Output : .MP4 .MOV
-        </p>
+            <p>
+            Input : .PNG .JPG .EXR - Output : .MP4 .MOV
+            </p>
+            
+            <p className={styles.note}>
+              <b>Note : </b> many online video services only support the YUV color space
+              with 4:2:0 chroma subsampling , to maximize compatibility by default subsampling is used.
+            </p>
+          </div>
+
+          <div className={styles.line}  ></div>
+
+          <div>
+            <h3> Parameters </h3>
+
+            <dl>
+              <dt>frame rate</dt>
+              <dd>frame rate of the output video</dd>
+              <dt>crl</dt>
+              <dd>convertion level , when crl is set to 1 you keep full quality </dd>
+              <dd>but may be slower, try higher values for faster renders</dd>
+              <dt>output name</dt>
+              <dd>output name of the video , chose the output extension here</dd>
+              <dt>gamma</dt>
+              <dd>only for exr images , the gamma correction value</dd>
+            </dl>
+          </div>
+
+        </div>
+
         
-        <p className={styles.note}>
-          <b>Note : </b> many online video services only support the YUV color space
-          with 4:2:0 chroma subsampling , to maximize compatibility by default subsampling is used.
-        </p>
 
-        <h3> Parameters </h3>
-
-        <dl>
-          <dt>frame rate</dt>
-          <dd>frame rate of the output video</dd>
-          <dt>crl</dt>
-          <dd>convertion level , when crl is set to 1 you keep full quality </dd>
-          <dd>but may be slower, try higher values for faster renders</dd>
-          <dt>output name</dt>
-          <dd>output name of the video , chose the output extension here</dd>
-          <dt>gamma</dt>
-          <dd>only for exr images , the gamma correction value</dd>
-        </dl>
+        
 
     </div>
     </>
@@ -134,11 +149,11 @@ export default function Home() {
     
       <div className={styles.frontpagetext}>
         <h1>
-          Convert easily,<br/>
-          all images to videos.
+          Just a converter,<br/>
+          from images to videos ....
         </h1>
         {getIntro()}
-        <a href='#app' className={styles.fancybtn}> CONVERT FOR FREE NOW</a>
+        <a href='#app' className={styles.fancybtn}> GO TO THE CONVERTER</a>
       </div>
 
       <div className={styles.frontpageimage}>
@@ -147,13 +162,14 @@ export default function Home() {
 
   </div>
   </div>
+
+
   <div className={styles.frontpageimagebot}>  
-    
   </div>
 
   <a className="anchor" id="app"></a>
   <div id="app" className={styles.app}>
-    <h2> A fully featured converter that allows you to make a video out of any sequences of images </h2>
+    <h2> A featured converter that allows you to make a video out of most sequences of images : </h2>
     <ConvertorApp/>
   </div>
 
@@ -164,16 +180,20 @@ export default function Home() {
     <div >
         <div>{get_icon("1")}</div>
         <h3> as fast as your machine </h3>
+        <p> This is a server-less app, the conversion occurs directly on your browser.
+          This means that the speed of the conversion is fully dependent on your machine capacities.  </p>
     </div>
 
     <div >
         <div>{get_icon("2")}</div>
         <h3> nothing stored on servers </h3>
+        <p> None of your data is shared. The app not needing to send data outside of your machine, nothing is stored. </p>
     </div>
 
     <div >
         <div>{get_icon("3")}</div>
         <h3> no uploads needed </h3>
+        <p> Another advantage of a server-less app, especially for this app is that you do not waist time transmitting your images to a server.   </p>
     </div>
 
   </div>

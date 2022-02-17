@@ -2,6 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+
+:root {
+
+  --color1_1: #2191ec;
+  --color1_2: #26c644;
+  --color1_1_shadow: rgba(38, 153, 198, 0.5);
+}
+
+
 html {
   scroll-behavior: smooth;
   scrollbar-width: none; /* For Firefox */

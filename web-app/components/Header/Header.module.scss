@@ -21,7 +21,7 @@
     
 
     .logo{
-        color: #26c644;
+        color: var(--color1_1);
     }
 
     .btn{
@@ -59,7 +59,7 @@
                     box-shadow: 0px 10px 25px 0px rgb(0 0 0 / 10%);
 
                     a:hover{
-                        color: #26c644 ;
+                        color: var(--color1_1) ;
                     }
                 }
             }
@@ -109,11 +109,11 @@
     text-decoration: none !important;
     user-select: none;
     background-color: transparent;
-    color: #26c644;
+    color: var(--color1_1);
     font-weight: 600;
     border-radius: 10px;
     padding: 16px 30px;
-    border: 2px solid #26c644;
+    border: 2px solid var(--color1_1);
     font-family: "Poppins", sans-serif;
 
     transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
@@ -121,16 +121,16 @@
 
 .fancybtn:hover{
     color: #fff;
-    background-color: #26c644;
-    border-color: #26c644;
+    background-color: var(--color1_1);
+    border-color: var(--color1_1);
 }
 .fancybtn:active{
     color: #fff;
-    background-color: #26c644;
-    border-color: #26c644;
+    background-color: var(--color1_1);
+    border-color: var(--color1_1);
 }
 .fancybtn:focus{
-    box-shadow: 0 0 0 0.2rem rgb(38 198 68 / 50%);
+    box-shadow: 0 0 0 0.2rem var(--color1_1_shadow);
 }
 
 .fancybtn:not(:disabled):not(.disabled) {
